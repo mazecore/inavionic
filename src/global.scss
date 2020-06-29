@@ -24,3 +24,22 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+@import "./src/theme/variables.scss";
+
+
+
+.center {
+    text-align: center;
+}
+
+.margin1 {
+    margin: 1rem;
+}
+
+.small-font {
+    font-size: small;
+}
+
+.red {
+    color: #ed576b;
+}
