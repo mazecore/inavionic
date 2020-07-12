@@ -11,6 +11,8 @@ export class ExploreContainerComponent implements OnInit {
 
 
   @Input() name: string;
+  public username = '';
+  public password = '';
   public numberOfLikes = 300;
   public tag = '';
   public loading = false;
@@ -20,7 +22,10 @@ export class ExploreContainerComponent implements OnInit {
   getHello() {
     this.complete = null;
     this.loading = true;
-    this.http.post(environment.apiUrl + '/update/', {tag: this.tag, numberOfLikes: this.numberOfLikes})
+    this.http.post(environment.apiUrl + '/update/', {username: this.username,
+                                                     password: this.password,
+                                                     tag: this.tag,
+                                                     numberOfLikes: this.numberOfLikes})
   .subscribe(data => {
     this.loading = false;
     console.log('data===>', data);
