@@ -11,10 +11,8 @@ export class ExploreContainerComponent implements OnInit {
 
 
   @Input() name: string;
-  public username = '';
-  public password = '';
-  public numberOfLikes = 300;
-  public tag = '';
+
+  public user = {};
   public loading = false;
   public complete = null;
   constructor(private http: HttpClient) {}
@@ -22,32 +20,23 @@ export class ExploreContainerComponent implements OnInit {
   getHello() {
     this.complete = null;
     this.loading = true;
-    this.http.post(environment.apiUrl + '/update/', {username: this.username,
-                                                     password: this.password,
-                                                     tag: this.tag,
-                                                     numberOfLikes: this.numberOfLikes})
+    this.http.post(environment.apiUrl + '/update/', this.user)
   .subscribe(data => {
     this.loading = false;
     console.log('data===>', data);
     this.complete = 'Liking is complete!';
-    // console.log(data.data); // http://54.175.162.21:8000/update
-    // console.log(data.headers); http://localhost:8000/update/
 
   } ,
    error => {
     this.loading = false;
     this.complete = 'There was an error';
     console.log(error);
-    // console.log(error.error); // error message as string
-    // console.log(error.headers);
 
   });
   }
 
   ngOnInit() {
-    // setInterval(() => {
-    //   console.log(this.numberOfLikes);
-    // }, 1000);
+    this.user.numberOfLikes = 300;
   }
 
 }
