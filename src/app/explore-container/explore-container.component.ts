@@ -12,7 +12,7 @@ export class ExploreContainerComponent implements OnInit {
 
   @Input() name: string;
 
-  public user = {};
+  public user = { numberOfLikes: 300};
   public loading = false;
   public complete = null;
   constructor(private http: HttpClient) {}
@@ -20,23 +20,19 @@ export class ExploreContainerComponent implements OnInit {
   getHello() {
     this.complete = null;
     this.loading = true;
-    this.http.post(environment.apiUrl + '/update/', this.user)
-  .subscribe(data => {
-    this.loading = false;
-    console.log('data===>', data);
-    this.complete = 'Liking is complete!';
-
-  } ,
-   error => {
-    this.loading = false;
-    this.complete = 'There was an error';
-    console.log(error);
-
-  });
+    this.http.post(environment.apiUrl + '/update/', this.user).subscribe(data => {
+          this.loading = false;
+          console.log('data===>', data);
+          this.complete = 'Liking is complete!';
+        } ,
+        error => {
+          this.loading = false;
+          this.complete = 'There was an error';
+          console.log(error);
+        });
   }
 
   ngOnInit() {
-    this.user.numberOfLikes = 300;
   }
 
 }
