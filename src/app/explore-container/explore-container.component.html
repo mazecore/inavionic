@@ -1,43 +1,43 @@
 
   <!-- <strong>{{ name }}</strong> -->
-  <ion-row>
-  <ion-column (ngSubmit)="getHello()" class="center">
-    <ion-item>
-      <ion-label >Instagram Username:</ion-label>
-      <ion-input [(ngModel)]="user.login" required name="login"></ion-input>
-    </ion-item>
+<ion-row>
+  <div class="center">
+      <ion-item>
+        <ion-label >Instagram Username:</ion-label>
+        <ion-input [(ngModel)]="user.login" required name="login"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Instagram Password:</ion-label>
-      <ion-input [(ngModel)]="user.password" required name="password"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label>Instagram Password:</ion-label>
+        <ion-input [(ngModel)]="user.password" required name="password"></ion-input>
+      </ion-item>
 
-    <ion-item-divider>
+      <ion-item-divider>
 
-    </ion-item-divider>
-
-
-
-    <!-- Inputs with labels -->
-
-    <ion-item>
-      <ion-label >Number Of Likes:</ion-label>
-      <ion-input type="number" [(ngModel)]="user.numberOfLikes" required name="numberOfLikes"></ion-input>
-    </ion-item>
-
-    <ion-item *ngIf="user.numberOfLikes > 300">
-    <span  class="margin1 small-font red">It is highly recommended to stay below 300 likes a day to avoid being flagged and possibly losing your account.</span>
-    </ion-item>
+      </ion-item-divider>
 
 
-    <ion-item>
-      <ion-label>Tag:</ion-label>
-      <ion-input [(ngModel)]="user.tag" required name="tag"></ion-input>
-    </ion-item>
+
+      <!-- Inputs with labels -->
+
+      <ion-item>
+        <ion-label >Number Of Likes:</ion-label>
+        <ion-input type="number" [(ngModel)]="user.numberOfLikes" required name="numberOfLikes"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="user.numberOfLikes > 300">
+      <span  class="margin1 small-font red">It is highly recommended to stay below 300 likes a day to avoid being flagged and possibly losing your account.</span>
+      </ion-item>
 
 
-    <ion-button *ngIf="!loading" class="margin1" type="submit">Engage the liking machine!</ion-button>
-</ion-column>
+      <ion-item>
+        <ion-label>Tag:</ion-label>
+        <ion-input [(ngModel)]="user.tag" required name="tag"></ion-input>
+      </ion-item>
+
+
+      <ion-button *ngIf="!loading" class="margin1" (click)="getHello()">Engage the liking machine!</ion-button>
+  </div>
 </ion-row>
    
     <p *ngIf="loading">liking in progress...</p>
