@@ -1,6 +1,7 @@
-<div id="container" class="center">
+
   <!-- <strong>{{ name }}</strong> -->
-  <form (ngSubmit)="getHello()">
+  <ion-row>
+  <ion-column (ngSubmit)="getHello()" class="center">
     <ion-item>
       <ion-label >Instagram Username:</ion-label>
       <ion-input [(ngModel)]="user.login" required name="login"></ion-input>
@@ -24,7 +25,7 @@
       <ion-input type="number" [(ngModel)]="user.numberOfLikes" required name="numberOfLikes"></ion-input>
     </ion-item>
 
-    <ion-item *ngIf="numberOfLikes > 300">
+    <ion-item *ngIf="user.numberOfLikes > 300">
     <span  class="margin1 small-font red">It is highly recommended to stay below 300 likes a day to avoid being flagged and possibly losing your account.</span>
     </ion-item>
 
@@ -36,9 +37,9 @@
 
 
     <ion-button *ngIf="!loading" class="margin1" type="submit">Engage the liking machine!</ion-button>
-</form>
+</ion-column>
+</ion-row>
    
     <p *ngIf="loading">liking in progress...</p>
     <p *ngIf="complete">{{complete}}</p>
     
-</div>

@@ -1,10 +1,21 @@
-#container {
+// #container {
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+//   // position: absolute;
+//   // left: 40%;
+//   // // right: 50%;
+//   // top: 50%;
+//   // transform: translateY(-50%);
+  
+  
+//   width: 100%;
+// }
+ion-row {
+  margin-top:10%;
+}
+
+ion-item {
+  justify-content: center;
+  max-width:500px;
 }
 
 #container strong {

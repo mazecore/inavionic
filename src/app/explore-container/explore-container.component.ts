@@ -12,27 +12,45 @@ export class ExploreContainerComponent implements OnInit {
 
   @Input() name: string;
 
-  public user = { numberOfLikes: 300};
+  public user = {
+                  login: '',
+                  password: '',
+                  numberOfLikes: 300,
+                  tag: ''
+                };
   public loading = false;
   public complete = null;
   constructor(private http: HttpClient) {}
 
   getHello() {
-    this.complete = null;
-    this.loading = true;
-    this.http.post(environment.apiUrl + '/update/', this.user).subscribe(data => {
-          this.loading = false;
-          console.log('data===>', data);
-          this.complete = 'Liking is complete!';
-        } ,
-        error => {
-          this.loading = false;
-          this.complete = 'There was an error';
-          console.log(error);
-        });
+    if (this.validate()) {
+      this.complete = null;
+      this.loading = true;
+      this.http.post(environment.apiUrl + '/update/', this.user).subscribe(data => {
+            this.loading = false;
+            console.log('data===>', data);
+            this.complete = 'Liking is complete!';
+          } ,
+          error => {
+            this.loading = false;
+            this.complete = 'There was an error';
+            console.log(error);
+          });
+    }
   }
 
   ngOnInit() {
+  }
+
+  validate() {
+    for (const [key, value] of Object.entries(this.user)) {
+        console.log(key, value);
+        if (value.toString().length < 1) {
+           this.complete = `Please complete the ${key} field`;
+           return false;
+        }
+    }
+    return true;
   }
 
 }
