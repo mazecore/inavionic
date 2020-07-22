@@ -1,6 +1,6 @@
 
   <!-- <strong>{{ name }}</strong> -->
-<ion-row>
+<ion-row class="margin-top">
   <div class="center">
       <ion-item>
         <ion-label >Instagram Username:</ion-label>
@@ -15,8 +15,6 @@
       <ion-item-divider>
 
       </ion-item-divider>
-
-
 
       <!-- Inputs with labels -->
 
@@ -37,9 +35,9 @@
 
 
       <ion-button *ngIf="!loading" class="margin1" (click)="getHello()">Engage the liking machine!</ion-button>
+
+      <p *ngIf="loading" class="margin-top">liking in progress...</p>
+      <p *ngIf="complete" class="margin-top red">{{complete}}</p>
   </div>
 </ion-row>
-   
-    <p *ngIf="loading">liking in progress...</p>
-    <p *ngIf="complete">{{complete}}</p>
     
